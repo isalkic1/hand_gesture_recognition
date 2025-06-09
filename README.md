@@ -37,7 +37,7 @@ pip install opencv-python numpy
 
 
 
-## Weights file- Download
+## Weights file download
 You can download the `.weights` file directly from the [Releases](https://github.com/isalkic1/hand_gesture_recognition/releases):
 
 - [cross-hands.weights](https://github.com/isalkic1/hand_gesture_recognition/releases/download/v1.0/cross-hands.weights)
@@ -45,11 +45,12 @@ You can download the `.weights` file directly from the [Releases](https://github
 Place it in the `models/` folder before running the code.
 
 
-
+---
+---
 
 # MediaPipe-Based ASL Letter Detection
 
-This script implements **real-time recognition of static American Sign Language (ASL)** letters using [MediaPipe Hands](https://google.github.io/mediapipe/solutions/hands) and OpenCV. It classifies letters based on geometric rules derived from hand landmark positions.
+This script implements **real-time recognition of static American Sign Language (ASL)** letters using [MediaPipe Hands](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker) and OpenCV. It classifies letters based on geometric rules derived from hand landmark positions.
 
 ## Features
 
