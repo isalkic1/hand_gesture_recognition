@@ -39,7 +39,7 @@ yolo.confidence = float(args.confidence)
 # Buffer for gesture smoothing
 gesture_history = deque(maxlen=5)
 
-# === Utility Functions ===
+# Utility Functions
 
 def preprocess_roi(roi):
     gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
@@ -71,7 +71,7 @@ def find_hand_contour(thresh, min_area=5000, aspect_ratio_range=(0.2, 2.0)):
     # Return the most "hand-like" contour: largest of the valid ones
     return max(valid_contours, key=cv2.contourArea)
 
-
+#Angle calculation function
 def calculate_angle(far, start, end):
     a = np.linalg.norm(start - end)
     b = np.linalg.norm(far - start)
@@ -81,6 +81,7 @@ def calculate_angle(far, start, end):
     angle = math.acos((b**2 + c**2 - a**2) / (2 * b * c))
     return angle * 180 / math.pi
 
+#Finger counting function
 def count_fingers(contour, roi):
     hull = cv2.convexHull(contour, returnPoints=False)
     if len(hull) < 3:
@@ -100,11 +101,12 @@ def count_fingers(contour, roi):
             cv2.circle(roi, tuple(far), 5, (0, 0, 255), -1)
     return min(finger_count + 1, 5)
 
+#Classification based on the number of fingers
 def classify_gesture(finger_count):
     if finger_count == 0:
         return "Fist"
     elif finger_count == 5:
-        return "Palm"
+        return "5 fingers"
     elif finger_count == 3:
         return "3 fingers"
     else:
@@ -114,8 +116,7 @@ def smooth_prediction(new_gesture):
     gesture_history.append(new_gesture)
     return max(set(gesture_history), key=gesture_history.count)
 
-# === Webcam Input and Processing Loop ===
-
+# Webcam Input and Processing Loop
 print("starting webcam...")
 vc = cv2.VideoCapture(args.device)
 
@@ -141,11 +142,10 @@ while rval:
         cy = y + (h / 2)
 
         color = (0, 255, 255)
-        #cv2.rectangle(frame, (x, y - 70), (x + w + 10, y + h), color, 2)
         text = f"{name} ({round(confidence, 2)})"
         cv2.putText(frame, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
-        # === EXPANDED ROI LOGIC ===
+        #Expanded ROI logic
         padding = int(0.2 * max(w, h))  # 20% of the larger hand dimension
         x = max(0, x - padding)
         y = max(0, y - padding)
