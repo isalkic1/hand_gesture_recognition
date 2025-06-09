@@ -16,9 +16,11 @@ This project implements real-time hand gesture recognition using a YOLO-based ob
 ---
 
 ## Requirements
-
 Install dependencies:
+```bash
 pip install opencv-python numpy
+
+```
 
 ## Structure
 ```hand_gesture_recognition_project/
@@ -41,3 +43,32 @@ You can download the `.weights` file directly from the [Releases](https://github
 - [cross-hands.weights](https://github.com/isalkic1/hand_gesture_recognition/releases/download/v1.0/cross-hands.weights)
 
 Place it in the `models/` folder before running the code.
+
+
+
+
+# MediaPipe-Based ASL Letter Detection
+
+This script implements **real-time recognition of static American Sign Language (ASL)** letters using [MediaPipe Hands](https://google.github.io/mediapipe/solutions/hands) and OpenCV. It classifies letters based on geometric rules derived from hand landmark positions.
+
+## Features
+
+- 🔹 Static ASL letter detection (A–Y, excluding J and Z)
+- 🔹 Real-time webcam input with FPS display
+- 🔹 Uses finger orientation, angles, and distances for rule-based classification
+- 🔹 Smoothing with a gesture buffer to reduce flickering
+
+## How to Run
+
+Install the required dependencies:
+
+```bash
+pip install opencv-python mediapipe
+```
+## Notes
+1. Works best with one visible hand
+2. Prints Fingers up state in console for debugging
+3. Some complex letters (e.g., M, N, T) depend on subtle landmark differences
+
+## Related File
+mediapipe_sign_language_detection.py — ASL letter classifier using MediaPipe
