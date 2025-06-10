@@ -54,10 +54,10 @@ This script implements **real-time recognition of static American Sign Language 
 
 ## Features
 
-- 🔹 Static ASL letter detection (A–Y, excluding J and Z)
-- 🔹 Real-time webcam input with FPS display
-- 🔹 Uses finger orientation, angles, and distances for rule-based classification
-- 🔹 Smoothing with a gesture buffer to reduce flickering
+- Static ASL letter detection (A–Y, excluding J and Z)
+- Real-time webcam input with FPS display
+- Uses finger orientation, angles, and distances for rule-based classification
+- Smoothing with a gesture buffer to reduce flickering
 
 ## How to Run
 
